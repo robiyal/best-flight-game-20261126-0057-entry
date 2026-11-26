@@ -1,0 +1,57 @@
+/* Sky Courier — Ring Run over Alder Valley. HUD and screens, one coherent style. */
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0b1622;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+#app, #app canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+.hidden { display: none !important; }
+#status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---- HUD ---- */
+#hud { position: fixed; inset: 0; pointer-events: none; color: #f4f8ff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.85); z-index: 5; }
+#hud-top-left { position: absolute; top: 14px; left: 16px; display: flex; gap: 10px; }
+.gauge { background: rgba(8, 22, 38, 0.62); border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 8px; padding: 6px 12px 7px; min-width: 86px; text-align: center; }
+.gauge-label { display: block; font-size: 11px; letter-spacing: 2px; color: #9fd0ff; }
+.gauge-value { font-size: 30px; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.gauge-unit { font-size: 11px; color: #cfe4ff; margin-left: 3px; }
+#hud-top-right { position: absolute; top: 14px; right: 16px; text-align: right;
+  background: rgba(8, 22, 38, 0.62); border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 8px; padding: 8px 14px; }
+.score-line { font-size: 13px; letter-spacing: 1px; color: #cfe4ff; line-height: 1.7; }
+.score-line span { font-size: 21px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+#hud-compass { position: absolute; top: 96px; left: 50%; transform: translateX(-50%);
+  background: rgba(8, 22, 38, 0.55); border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 6px; padding: 4px 14px; font-size: 13px; letter-spacing: 2px; color: #dceeff; }
+#hud-bottom { position: absolute; left: 16px; bottom: 16px; width: 300px; }
+.bar-row { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.bar-label { font-size: 11px; letter-spacing: 2px; width: 34px; color: #9fd0ff; }
+.bar { flex: 1; height: 12px; background: rgba(8, 22, 38, 0.65); border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; width: 100%; }
+.bar-fill.fuel { background: linear-gradient(90deg, #ffb020, #ffd34d); }
+.bar-fill.thr { background: linear-gradient(90deg, #2e9be6, #7cc4ff); }
+#hud-next { position: absolute; right: 16px; bottom: 16px; font-size: 14px; letter-spacing: 1px;
+  background: rgba(8, 22, 38, 0.62); border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 8px; padding: 8px 14px; color: #ffd34d; }
+#hud-next span { color: #fff; font-weight: 700; }
+#hud-msg { position: absolute; top: 34%; left: 50%; transform: translateX(-50%);
+  font-size: 26px; font-weight: 700; letter-spacing: 1px; text-align: center;
+  background: rgba(8, 22, 38, 0.55); border-radius: 10px; padding: 10px 22px; }
+
+/* ---- Full screens ---- */
+.screen { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(5, 14, 26, 0.45); z-index: 10; }
+.panel { background: rgba(8, 24, 42, 0.88); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 14px; padding: 34px 44px; max-width: 620px; text-align: center; color: #f4f8ff;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.5); }
+.panel h1 { margin: 0 0 4px; font-size: 46px; letter-spacing: 6px; color: #ffd34d; }
+.panel h2 { margin: 0 0 14px; font-size: 19px; font-weight: 400; letter-spacing: 3px; color: #9fd0ff; }
+.tagline { font-size: 16px; line-height: 1.55; color: #dceeff; margin: 10px 0 16px; }
+.controls { font-size: 14px; line-height: 2; color: #cfe4ff; margin-bottom: 18px; }
+.controls b { color: #fff; background: rgba(255,255,255,0.14); border-radius: 4px; padding: 1px 7px; }
+.panel button { font-size: 19px; font-weight: 700; letter-spacing: 2px; color: #08222f;
+  background: linear-gradient(180deg, #ffd34d, #ffb020); border: none; border-radius: 9px;
+  padding: 13px 34px; cursor: pointer; }
+.panel button:hover { filter: brightness(1.08); }
+.hint { font-size: 13px; color: #9fb8d8; margin-top: 16px; }
+.final-score { font-size: 18px; letter-spacing: 1px; color: #fff; margin: 14px 0 20px; }
+.final-score span { font-weight: 700; color: #ffd34d; }
