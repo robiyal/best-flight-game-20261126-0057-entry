@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sky Courier — Ring Run over Alder Valley</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app"></div>
+
+<!-- Flight HUD: altitude, speed and heading are always visible while flying. -->
+<div id="hud" class="hidden">
+  <div id="hud-top-left">
+    <div class="gauge"><span class="gauge-label">ALT</span><span class="gauge-value" id="hud-alt">0</span><span class="gauge-unit">FT</span></div>
+    <div class="gauge"><span class="gauge-label">SPD</span><span class="gauge-value" id="hud-spd">0</span><span class="gauge-unit">KT</span></div>
+    <div class="gauge"><span class="gauge-label">HDG</span><span class="gauge-value" id="hud-hdg">000</span><span class="gauge-unit">&deg;</span></div>
+    <div class="gauge"><span class="gauge-label">V/S</span><span class="gauge-value" id="hud-vs">0</span><span class="gauge-unit">FT/M</span></div>
+  </div>
+  <div id="hud-top-right">
+    <div class="score-line">SCORE <span id="hud-score">0</span></div>
+    <div class="score-line">RINGS <span id="hud-rings">0 / 12</span></div>
+    <div class="score-line">TIME <span id="hud-time">0:00</span></div>
+  </div>
+  <div id="hud-compass"><span id="hud-compass-text">N &nbsp; 030 &nbsp; 060 &nbsp; E &nbsp; 120 &nbsp; 150 &nbsp; S &nbsp; 210 &nbsp; 240 &nbsp; W &nbsp; 300 &nbsp; 330</span></div>
+  <div id="hud-bottom">
+    <div class="bar-row"><span class="bar-label">FUEL</span><div class="bar"><div id="hud-fuel" class="bar-fill fuel"></div></div></div>
+    <div class="bar-row"><span class="bar-label">THR</span><div class="bar"><div id="hud-thr" class="bar-fill thr"></div></div></div>
+  </div>
+  <div id="hud-next">NEXT RING <span id="hud-next-dist">—</span></div>
+  <div id="hud-msg"></div>
+</div>
+
+<!-- Start screen -->
+<div id="screen-menu" class="screen">
+  <div class="panel">
+    <h1>SKY COURIER</h1>
+    <h2>Ring Run over Alder Valley</h2>
+    <p class="tagline">Fly the Kestrel K-2 through all 12 rings, then land on the Alderfield runway. Watch your fuel — a gentle landing refuels you.</p>
+    <div class="controls">
+      <div><b>&uarr; / &darr;</b> pitch &nbsp; <b>&larr; / &rarr;</b> roll &nbsp; <b>W / S</b> throttle</div>
+      <div><b>Drag mouse</b> steer &nbsp; <b>Space</b> brake &nbsp; <b>R</b> restart &nbsp; <b>P</b> pause &nbsp; <b>M</b> mute</div>
+    </div>
+    <button id="start-btn" type="button">TAKE OFF</button>
+    <p class="hint">Tip: bank to turn, keep speed above 25 kt, and follow the orange beacon to the next ring.</p>
+  </div>
+</div>
+
+<!-- Crash screen -->
+<div id="screen-crash" class="screen hidden">
+  <div class="panel">
+    <h1>CRASHED</h1>
+    <p id="crash-reason" class="tagline">You clipped the terrain.</p>
+    <p class="final-score">SCORE <span id="crash-score">0</span> &nbsp;·&nbsp; RINGS <span id="crash-rings">0 / 12</span></p>
+    <button id="retry-btn" type="button">FLY AGAIN (R)</button>
+  </div>
+</div>
+
+<!-- Landing / mission-complete screen -->
+<div id="screen-land" class="screen hidden">
+  <div class="panel">
+    <h1>MISSION COMPLETE</h1>
+    <p class="tagline">All 12 rings flown — and a smooth landing on the Alderfield runway. The valley salutes you, courier.</p>
+    <p class="final-score">SCORE <span id="land-score">0</span> &nbsp;·&nbsp; TIME <span id="land-time">0:00</span> &nbsp;·&nbsp; FUEL LEFT <span id="land-fuel">0</span>%</p>
+    <button id="again-btn" type="button">FLY AGAIN (R)</button>
+  </div>
+</div>
+
+<!-- Pause screen -->
+<div id="screen-pause" class="screen hidden">
+  <div class="panel">
+    <h1>PAUSED</h1>
+    <p class="tagline">Press P to keep flying.</p>
+    <button id="resume-btn" type="button">RESUME (P)</button>
+  </div>
+</div>
+
+<p id="status" role="status" aria-live="polite"></p>
+<script src="./vendor/three.min.js"></script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
